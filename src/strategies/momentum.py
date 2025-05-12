@@ -1,5 +1,6 @@
 def momentum_strategy(df):
     import ta
-    df['macd'] = ta.trend.MACD(df['close']).macd_diff()
-    df['Signal'] = df['macd'] > 0
+    macd = ta.trend.MACD(df['close'])
+    df['macd_diff'] = macd.macd_diff()
+    df['Signal'] = df['macd_diff'] > 0
     return df[df['Signal']]
