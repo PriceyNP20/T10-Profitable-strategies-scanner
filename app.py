@@ -7,6 +7,9 @@ st.title("Top 10 Profitable Trading Strategies")
 symbol = st.text_input("Symbol (e.g., BTC-USD)", "BTC-USD")
 df = get_data(symbol)
 
-st.subheader("Trend Following Signal")
-signals = trend_following_strategy(df)
-st.dataframe(signals.tail())
+if not df.empty:
+    st.subheader("Trend Following Signal")
+    signals = trend_following_strategy(df)
+    st.dataframe(signals.tail())
+else:
+    st.warning("No data found for the selected symbol.")
