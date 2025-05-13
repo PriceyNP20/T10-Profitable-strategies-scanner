@@ -1,3 +1,4 @@
+from src.strategies.plot_signal_chart import plot_signal_chart
 
 import streamlit as st
 import pandas as pd
@@ -44,3 +45,13 @@ if results:
     st.dataframe(pd.DataFrame(results))
 else:
     st.info("No matching signals found for the selected strategy.")
+
+# Chart Integration
+for res in results:
+    st.write(f\"**{res[\symbol']}** — Matches: {res['matches]}\")
+    if res[\"details\"]:
+        df = pd.DataFrame(res[\"details\"])
+        st.dataframe(df)
+        with st.expander(\"📈 View Chart\"):
+            fig = plot_signal_chart(df)
+            st.plotly_chart(fig, use_container_width=True)
