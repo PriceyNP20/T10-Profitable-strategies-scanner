@@ -49,7 +49,6 @@ else:
 
 # Chart Integration
 for res in results:
-    st.write(f\"**{res[\symbol']}** — Matches: {res['matches]}\")
     if res[\"details\"]:
         df = pd.DataFrame(res[\"details\"])
         st.dataframe(df)
@@ -67,6 +66,20 @@ for res in results:
         with st.expander("📈 View Chart"):
             fig = plot_signal_chart(df)
             st.plotly_chart(fig, use_container_width=True)
+
+# === Match Results with Plotly Charts ===
+for res in results:
+    if "error" in res:
+        st.error(f"{res['symbol']}: {res['error']}")
+    else:
+        st.markdown(f"### {res['symbol']} — Matches: {res.get('matches', 0)}")
+        if res.get("details"):
+            df = pd.DataFrame(res["details"])
+            st.dataframe(df)
+
+            with st.expander("📈 View Chart"):
+                fig = plot_signal_chart(df)
+                st.plotly_chart(fig, use_container_width=True)
 
 # === Match Results with Plotly Charts ===
 for res in results:
