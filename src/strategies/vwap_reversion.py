@@ -5,4 +5,3 @@ def vwap_reversion_strategy(df):
     df['vwap'] = df['cum_price_vol'] / df['cum_vol']
     df['Signal'] = df['close'] < df['vwap'] * 0.98
     return df[df['Signal']]
-vwap_reversion_strategy = vwap_reversion_strategy
