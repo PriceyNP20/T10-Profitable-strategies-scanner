@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: trading-strategies-scanner
+    name: strategy-scanner-app
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: streamlit run app.py

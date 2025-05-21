@@ -1,3 +1,2 @@
-# Trading Strategies Scanner
-
-A Streamlit app showcasing 10 profitable trading strategies using live data.
+# Strategy Scanner: Clean Setup
+Ready-to-run with selector, charts, and timeframe toggle.
